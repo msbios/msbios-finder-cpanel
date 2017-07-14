@@ -1,0 +1,41 @@
+<?php
+/**
+ * @access protected
+ * @author Judzhin Miles <info[woof-woof]msbios.com>
+ */
+namespace MSBios\CPanel;
+?>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="panel panel-flat">
+            <div class="panel-heading">
+                <h5 class="panel-title">
+                    File manager
+                </h5>
+            </div>
+
+            <div class="panel-body">
+                <div id="ckfinder"></div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<?php
+$this->headScript()
+    ->prependFile($this->basePath('limitless/ckfinder/ckfinder.js'));
+
+$this->inlineScript()->captureStart();
+echo <<<JS
+	CKFinder.widget('ckfinder', {
+		width: '100%',
+		height: 500,
+		connectorPath: '{$this->url('cpanel/file-manager', ['action' => 'connector'])}'
+	});
+JS;
+$this->inlineScript()->captureEnd();
+?>

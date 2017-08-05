@@ -7,7 +7,7 @@ namespace MSBios\Finder\CPanel\Controller;
 
 use CKSource\CKFinder\CKFinder;
 use MSBios\CPanel\Mvc\Controller\ActionControllerInterface;
-use MSBios\Finder\Config\Config;
+use Zend\Config\Config;
 use Zend\Mvc\Controller\AbstractActionController;
 
 /**
@@ -17,15 +17,15 @@ use Zend\Mvc\Controller\AbstractActionController;
 class FileManagerController extends AbstractActionController implements ActionControllerInterface
 {
     /** @var Config */
-    protected $config;
+    protected $options;
 
     /**
      * FileManagerController constructor.
-     * @param Config $config
+     * @param Config $options
      */
-    public function __construct(Config $config)
+    public function __construct(Config $options)
     {
-        $this->config = $config;
+        $this->options = $options;
     }
 
     /**
@@ -38,7 +38,7 @@ class FileManagerController extends AbstractActionController implements ActionCo
         }
 
         /** @var CKFinder $ckfinder */
-        $ckfinder = new CKFinder($this->config->toArray());
+        $ckfinder = new CKFinder($this->options->toArray());
         $ckfinder->run();
         die();
     }

@@ -6,6 +6,7 @@
 namespace MSBios\Finder\CPanel\Controller;
 
 use CKSource\CKFinder\CKFinder;
+use MSBios\CPanel\Mvc\Controller\ActionControllerInterface;
 use MSBios\Finder\Config\Config;
 use Zend\Mvc\Controller\AbstractActionController;
 
@@ -13,7 +14,7 @@ use Zend\Mvc\Controller\AbstractActionController;
  * Class FileManagerController
  * @package MSBios\Finder\CPanel\Controller
  */
-class FileManagerController extends AbstractActionController
+class FileManagerController extends AbstractActionController implements ActionControllerInterface
 {
     /** @var Config */
     protected $config;

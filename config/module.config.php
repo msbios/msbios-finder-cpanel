@@ -68,6 +68,18 @@ return [
         ]
     ],
 
+    \MSBios\Guard\Module::class => [
+
+        'guard_listeners' => [
+            \MSBios\Guard\Listener\ControllerListener::class => [
+                [
+                    'controller' => Controller\FileManagerController::class,
+                    'roles' => ['DEVELOPER']
+                ],
+            ],
+        ]
+    ],
+
     Module::class => [
 
     ]
